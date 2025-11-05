@@ -13,20 +13,34 @@ export type AiPrompts = {
   user_updated?: string | DirectusUsers | null;
 };
 
+export type Languages = {
+  code: string;
+  direction?: string | null;
+  name?: string | null;
+};
+
+export type BlockButtonTranslations = {
+  block_button_id?: BlockButton | null;
+  id: number;
+  label?: string | null;
+  languages_code?: string | Languages | null;
+};
+
 export type BlockButton = {
-  button_group?: string | BlockButtonGroup | null;
+  button_group?: BlockButtonGroup | null;
   date_created?: string | null;
   date_updated?: string | null;
   id: string;
   label?: string | null;
-  page?: string | Pages | null;
-  post?: string | Posts | null;
+  page?: Pages | null;
+  post?: Posts | null;
   sort?: number | null;
   type?: string | null;
   url?: string | null;
   user_created?: string | DirectusUsers | null;
   user_updated?: string | DirectusUsers | null;
   variant?: string | null;
+  translations: BlockButtonTranslations[];
 };
 
 export type BlockButtonGroup = {
@@ -37,6 +51,41 @@ export type BlockButtonGroup = {
   sort?: number | null;
   user_created?: string | DirectusUsers | null;
   user_updated?: string | DirectusUsers | null;
+};
+
+export type FeatureCard = {
+  card_type?: string | null;
+  featured_id?: BlockFeatures | null;
+  id: string;
+  main_icon?: DirectusFiles | null;
+  main_text?: string | null;
+  main_title?: string | null;
+  sort?: number | null;
+  translations: FeatureCardTranslations[];
+};
+
+export type FeatureCardTranslations = {
+  feature_card_id?: FeatureCard | null;
+  id: number;
+  languages_code?: string | Languages | null;
+  main_text?: string | null;
+  main_title?: string | null;
+};
+
+export type BlockFeatures = {
+  feature_image?: DirectusFiles | null;
+  featured_card_id: FeatureCard[] | string[];
+  id: string;
+  sort?: number | null;
+  featured_image_src?: string | null;
+  translations: BlockFeaturesTranslations[];
+};
+
+export type BlockFeaturesTranslations = {
+  block_features_id?: BlockFeatures | null;
+  featured_image_src?: string | null;
+  id: number;
+  languages_code?: string | Languages | null;
 };
 
 export type BlockForm = {
@@ -74,20 +123,65 @@ export type BlockGalleryItems = {
   user_updated?: string | DirectusUsers | null;
 };
 
+export type BlockStepsTranslations = {
+  block_steps_id?: number | BlockSteps | null;
+  id: number;
+  languages_code?: string | Languages | null;
+  section_title?: string | null;
+  tag_text?: string | null;
+};
+
+export type BlockStepCardTranslations = {
+  block_step_card_id?: number | BlockStepCard | null;
+  card_text?: string | null;
+  card_title?: string | null;
+  id: number;
+  languages_code?: string | Languages | null;
+};
+
+export type BlockSteps = {
+  "header-tktaek": string;
+  id: number;
+  section_title?: string | null;
+  sort?: number | null;
+  steps: BlockStepCard[] | string[];
+  tag_text?: string | null;
+  translations: BlockStepsTranslations[];
+};
+
+export type BlockStepCard = {
+  card_text?: string | null;
+  card_title?: string | null;
+  id: number;
+  sort?: number | null;
+  step_card?: number | BlockSteps | null;
+  translations: BlockStepCardTranslations[];
+};
+
+export type BlockHeroTranslations = {
+  block_hero_id?: BlockHero | null;
+  description?: string | null;
+  id: number;
+  languages_code?: string | Languages | null;
+  headline: string | null;
+  tagline: string | null;
+};
+
 export type BlockHero = {
-  button_group?: string | BlockButtonGroup | null;
+  button_group?: BlockButtonGroup | null;
   date_created?: string | null;
   date_updated?: string | null;
   description?: string | null;
   headline?: string | null;
   id: string;
+  translations: BlockHeroTranslations[];
   image?: string | DirectusFiles | null;
   meta_header_block_hero: string;
   tagline?: string | null;
   user_created?: string | DirectusUsers | null;
   user_updated?: string | DirectusUsers | null;
-  video_background?: string | DirectusFiles | null;
-  video_background_webp?: string | DirectusFiles | null;
+  video_background?: DirectusFiles | null;
+  video_background_webp?: DirectusFiles | null;
 };
 
 export type BlockPosts = {
@@ -669,6 +763,13 @@ export type NavigationItems = {
   url?: string | null;
   user_created?: string | DirectusUsers | null;
   user_updated?: string | DirectusUsers | null;
+  translations: PagesTranslations[];
+};
+
+export type PagesTranslations = {
+  id: number;
+  languages_code?: string | Languages | null;
+  pages_id?: string | Pages | null;
 };
 
 export type PageBlocks = {
@@ -678,7 +779,7 @@ export type PageBlocks = {
   date_updated?: string | null;
   hide_block?: boolean | null;
   id: string;
-  item?: string | null;
+  item?: BlockHero | null | BlockFeatures | BlockSteps;
   page?: string | Pages | null;
   sort?: number | null;
   user_created?: string | DirectusUsers | null;
@@ -703,6 +804,7 @@ export type Pages = {
   title?: string | null;
   user_created?: string | DirectusUsers | null;
   user_updated?: string | DirectusUsers | null;
+  translations: PagesTranslations[];
 };
 
 export type Posts = {
@@ -750,6 +852,9 @@ export type CustomDirectusTypes = {
   block_gallery: BlockGallery[];
   block_gallery_items: BlockGalleryItems[];
   block_hero: BlockHero[];
+  block_hero_translations: BlockHeroTranslations[];
+  block_features: BlockFeatures[];
+  block_features_translations: BlockFeaturesTranslations[];
   block_posts: BlockPosts[];
   block_pricing: BlockPricing[];
   block_pricing_cards: BlockPricingCards[];
@@ -790,6 +895,15 @@ export type CustomDirectusTypes = {
   navigation_items: NavigationItems[];
   page_blocks: PageBlocks[];
   pages: Pages[];
+  pages_translations: PagesTranslations[];
   posts: Posts[];
   redirects: Redirects[];
+  languages: Languages[];
+  block_button_translations: BlockButtonTranslations[];
+  feature_card: FeatureCard[];
+  feature_card_translations: FeatureCardTranslations[];
+  block_steps: BlockSteps[];
+  block_steps_translations: BlockStepsTranslations[];
+  block_step_card: BlockStepCard[];
+  block_step_card_translations: BlockStepCardTranslations[];
 };
