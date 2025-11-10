@@ -1,6 +1,13 @@
-import { BlockHero } from "@/app/_types/directusTypes";
-import { ButtonRenderer } from "../../buttons/ButtonRenderer";
+import {
+  BlockButtonGroup,
+  BlockHero,
+  CustomDirectusTypes,
+} from "@/app/_types/directusTypes";
 import { getLocaleFromCookies } from "@/app/_lib/utils/getLocaleFromCookies";
+import client from "@/app/_lib/directus";
+import { QueryFields, readItem } from "@directus/sdk";
+import { ButtonRenderer } from "../../buttons/ButtonRenderer";
+import { DIRECTUS_URL } from "@/app/_lib/config/constants";
 
 export const HeroSection = async ({
   video_background,
@@ -13,7 +20,16 @@ export const HeroSection = async ({
 }: BlockHero) => {
   const { lang } = await getLocaleFromCookies();
 
-  const buttons = button_group?.buttons ?? [];
+  const { buttons } = await client.request(
+    readItem("block_button_group", button_group ?? "", {
+      fields: ["*", "translations.*"] as
+        | QueryFields<CustomDirectusTypes, BlockButtonGroup>
+        | undefined,
+    }),
+  );
+
+  console.log(buttons, "buttons_hero");
+
   const translationsByLang = translations.find(
     (translation) => translation.languages_code === lang,
   );
@@ -32,11 +48,11 @@ export const HeroSection = async ({
         playsInline
       >
         <source
-          src={`http://localhost:8055/assets/${video_background}`}
+          src={`${DIRECTUS_URL.ASSETS}/${video_background}`}
           type="video/mp4"
         />
         <source
-          src={`http://localhost:8055/assets/${video_background_webp}`}
+          src={`${DIRECTUS_URL.ASSETS}/${video_background_webp}`}
           type="video/webm"
         />
         Your browser does not support the video tag.
@@ -58,9 +74,9 @@ export const HeroSection = async ({
             )}
           </div>
           <div className="flex gap-4">
-            {buttons.length &&
+            {buttons?.length &&
               buttons.map((button) => (
-                <ButtonRenderer key={button.id} {...button} />
+                <ButtonRenderer key={button} buttonId={button} />
               ))}
           </div>
         </div>

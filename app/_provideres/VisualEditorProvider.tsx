@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { apply, remove } from "@directus/visual-editing";
+import { DIRECTUS_URL } from "../_lib/config/constants";
 
 export function VisualEditorProvider({
   children,
@@ -18,7 +19,7 @@ export function VisualEditorProvider({
 
       try {
         await apply({
-          directusUrl: "http://localhost:8055",
+          directusUrl: `${DIRECTUS_URL.BASE}`,
           onSaved: async (data) => {
             console.log("Content saved successfully:", data);
             try {

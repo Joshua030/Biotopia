@@ -26,8 +26,25 @@ export type BlockButtonTranslations = {
   languages_code?: string | Languages | null;
 };
 
+export type BlockMainBanner = {
+  background_image?: string | DirectusFiles | null;
+  "header-qnr8cf": string;
+  id: string;
+  image_alt?: string | null;
+  main_title?: string | null;
+  sort?: number | null;
+  translations: BlockMainBannerTranslations[];
+};
+
+export type BlockMainBannerTranslations = {
+  block_main_banner_id?: string | BlockMainBanner | null;
+  id: number;
+  image_src?: string | null;
+  languages_code?: string | Languages | null;
+  main_title?: string | null;
+};
+
 export type BlockButton = {
-  button_group?: BlockButtonGroup | null;
   date_created?: string | null;
   date_updated?: string | null;
   id: string;
@@ -44,7 +61,8 @@ export type BlockButton = {
 };
 
 export type BlockButtonGroup = {
-  buttons: BlockButton[];
+  buttons: string[];
+  contact_buttons?: BlockButton[];
   date_created?: string | null;
   date_updated?: string | null;
   id: string;
@@ -149,6 +167,27 @@ export type BlockSteps = {
   translations: BlockStepsTranslations[];
 };
 
+export type BlockContact = {
+  background_image?: string | DirectusFiles | null;
+  button_group: string;
+  description?: string | null;
+  "header-vhcm3p": string;
+  id: string;
+  image_group: string;
+  image_src?: string | null;
+  main_title?: string | null;
+  translations: BlockContactTranslations[];
+};
+
+export type BlockContactTranslations = {
+  block_contact_id?: string | BlockContact | null;
+  description?: string | null;
+  id: number;
+  image_src?: string | null;
+  languages_code?: string | Languages | null;
+  main_title?: string | null;
+};
+
 export type BlockStepCard = {
   card_text?: string | null;
   card_title?: string | null;
@@ -168,7 +207,7 @@ export type BlockHeroTranslations = {
 };
 
 export type BlockHero = {
-  button_group?: BlockButtonGroup | null;
+  button_group?: string | null;
   date_created?: string | null;
   date_updated?: string | null;
   description?: string | null;
@@ -779,7 +818,13 @@ export type PageBlocks = {
   date_updated?: string | null;
   hide_block?: boolean | null;
   id: string;
-  item?: BlockHero | null | BlockFeatures | BlockSteps;
+  item?:
+    | BlockHero
+    | null
+    | BlockFeatures
+    | BlockSteps
+    | BlockContact
+    | BlockMainBanner;
   page?: string | Pages | null;
   sort?: number | null;
   user_created?: string | DirectusUsers | null;
@@ -797,6 +842,7 @@ export type Pages = {
   meta_seo: string;
   meta_tabs: string;
   permalink?: string | null;
+  permalink_en?: string | null;
   published_at?: string | null;
   seo?: unknown | null;
   sort?: number | null;
@@ -906,4 +952,8 @@ export type CustomDirectusTypes = {
   block_steps_translations: BlockStepsTranslations[];
   block_step_card: BlockStepCard[];
   block_step_card_translations: BlockStepCardTranslations[];
+  block_contact: BlockContact[];
+  block_contact_translations: BlockContactTranslations[];
+  block_main_banner: BlockMainBanner[];
+  block_main_banner_translations: BlockMainBannerTranslations[];
 };

@@ -1,6 +1,6 @@
 import { createDirectus, rest, authentication } from "@directus/sdk";
 import { CustomDirectusTypes } from "../_types/directusTypes";
-const BACKEND_URL = "http://localhost:8055/";
+const BACKEND_URL = process.env.NEXT_PUBLIC_DIRECTUS_URL || "";
 const client = createDirectus<CustomDirectusTypes>(BACKEND_URL)
   .with(authentication("json"))
   .with(

@@ -2,6 +2,7 @@ import { BlockFeatures } from "@/app/_types/directusTypes";
 import Image from "next/image";
 import { FeaturedCard } from "./FeaturedCard";
 import { getLocaleFromCookies } from "@/app/_lib/utils/getLocaleFromCookies";
+import { DIRECTUS_URL } from "@/app/_lib/config/constants";
 
 export const FeaturedCards = async (featured_id: BlockFeatures) => {
   const { feature_image, featured_card_id, featured_image_src, translations } =
@@ -20,7 +21,7 @@ export const FeaturedCards = async (featured_id: BlockFeatures) => {
       <div className="inner-container flex items-end py-50">
         <div className="relative aspect-2/3 w-1/3">
           <Image
-            src={`http://localhost:8055/assets/${feature_image}`}
+            src={`${DIRECTUS_URL.ASSETS}/${feature_image}`}
             fill
             objectFit="cover"
             alt={formattedSrc || "Imagen detallata de un paisaje"}

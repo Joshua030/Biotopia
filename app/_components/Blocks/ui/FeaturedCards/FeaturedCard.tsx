@@ -1,4 +1,5 @@
 import InlineSvgTrusted from "@/app/_components/general/InlineSvgTrusted";
+import { DIRECTUS_URL } from "@/app/_lib/config/constants";
 import client from "@/app/_lib/directus";
 import { getLocaleFromCookies } from "@/app/_lib/utils/getLocaleFromCookies";
 import { CustomDirectusTypes, FeatureCard } from "@/app/_types/directusTypes";
@@ -15,7 +16,7 @@ export const FeaturedCard = async ({ id }: { id: string }) => {
 
   const { main_icon, translations, main_title, main_text } = card;
 
-  const src = `http://localhost:8055/assets/${main_icon}`;
+  const src = `${DIRECTUS_URL.ASSETS}/${main_icon}`;
   const { lang } = await getLocaleFromCookies();
   const translationsByLang = translations?.find(
     (translation) => translation.languages_code === lang,

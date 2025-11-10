@@ -1,12 +1,16 @@
 import {
+  BlockContact,
   BlockFeatures,
   BlockHero,
+  BlockMainBanner,
   BlockSteps,
   PageBlocks,
 } from "@/app/_types/directusTypes";
 import { HeroSection } from "./ui/HeroSection";
 import { FeaturedCards } from "./ui/FeaturedCards/FeaturedCards";
 import { StepCards } from "./ui/StepCards/StepCards";
+import { ContactBanner } from "./ui/ContactBanner";
+import { MainBanner } from "./ui/MainBanner";
 
 interface BlockRenderedProps {
   blocks: PageBlocks[];
@@ -32,6 +36,19 @@ export const BlockRenderer = ({ blocks }: BlockRenderedProps) => {
         if (!block.item) return null;
         const item = block.item as BlockSteps;
         return <StepCards key={block.id} {...item} />;
+      }
+
+      case "block_contact": {
+        if (!block.item) return null;
+        const item = block.item as BlockContact;
+        return <ContactBanner key={block.id} {...item} />;
+      }
+
+      case "block_main_banner": {
+        console.log("block", block);
+        if (!block.item) return null;
+        const item = block.item as BlockMainBanner;
+        return <MainBanner key={block.id} {...item} />;
       }
 
       default:
