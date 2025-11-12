@@ -106,6 +106,32 @@ export type BlockFeaturesTranslations = {
   languages_code?: string | Languages | null;
 };
 
+export type BlockHeroStoryTranslations = {
+  block_hero_story_id?: string | BlockHeroStory | null;
+  description?: string | null;
+  id: number;
+  image_alt?: string | null;
+  languages_code?: string | Languages | null;
+  title_line_1?: string | null;
+  title_line_2?: string | null;
+  title_line_3?: string | null;
+};
+
+export type BlockHeroStory = {
+  description?: string | null;
+  featured_image?: string | DirectusFiles | null;
+  featured_video_mp4?: string | DirectusFiles | null;
+  featured_video_webm?: string | DirectusFiles | null;
+  "header-l6jprl": string;
+  id: string;
+  image_alt?: string | null;
+  sort?: number | null;
+  title_line_1?: string | null;
+  title_line_2?: string | null;
+  title_line_3?: string | null;
+  translations: BlockHeroStoryTranslations[];
+};
+
 export type BlockForm = {
   date_created?: string | null;
   date_updated?: string | null;
@@ -824,7 +850,8 @@ export type PageBlocks = {
     | BlockFeatures
     | BlockSteps
     | BlockContact
-    | BlockMainBanner;
+    | BlockMainBanner
+    | BlockHeroStory;
   page?: string | Pages | null;
   sort?: number | null;
   user_created?: string | DirectusUsers | null;
@@ -956,4 +983,6 @@ export type CustomDirectusTypes = {
   block_contact_translations: BlockContactTranslations[];
   block_main_banner: BlockMainBanner[];
   block_main_banner_translations: BlockMainBannerTranslations[];
+  block_hero_story: BlockHeroStory[];
+  block_hero_story_translations: BlockHeroStoryTranslations[];
 };

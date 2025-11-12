@@ -3,10 +3,18 @@ import Image from "next/image";
 import { FeaturedCard } from "./FeaturedCard";
 import { getLocaleFromCookies } from "@/app/_lib/utils/getLocaleFromCookies";
 import { DIRECTUS_URL } from "@/app/_lib/config/constants";
+import clsx from "clsx";
 
-export const FeaturedCards = async (featured_id: BlockFeatures) => {
+interface FeaturedCardsProps {
+  blockItems: BlockFeatures;
+  background?: string | null;
+}
+export const FeaturedCards = async ({
+  blockItems,
+  background,
+}: FeaturedCardsProps) => {
   const { feature_image, featured_card_id, featured_image_src, translations } =
-    featured_id ?? {};
+    blockItems ?? {};
   const { lang } = await getLocaleFromCookies();
 
   const translationsByLang = translations.find(
@@ -17,7 +25,14 @@ export const FeaturedCards = async (featured_id: BlockFeatures) => {
     translationsByLang?.featured_image_src || featured_image_src;
 
   return (
-    <section className="main-padding bg-amber-50">
+    <section
+      className={clsx(
+        "main-padding group",
+        background === "dark"
+          ? "dark-section bg-mineral-900 text-amber-50"
+          : "text-mineral-900 bg-amber-50",
+      )}
+    >
       <div className="inner-container flex items-end py-50">
         <div className="relative aspect-2/3 w-1/3">
           <Image

@@ -28,7 +28,7 @@ export default async function DefaultPage({ params }: HomePageProps) {
 
   return (
     <div>
-      <BlockRenderer blocks={homepageData[0].blocks} />
+      <BlockRenderer blocks={homepageData[0]?.blocks} />
     </div>
   );
 }

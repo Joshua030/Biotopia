@@ -28,8 +28,6 @@ export const HeroSection = async ({
     }),
   );
 
-  console.log(buttons, "buttons_hero");
-
   const translationsByLang = translations.find(
     (translation) => translation.languages_code === lang,
   );
