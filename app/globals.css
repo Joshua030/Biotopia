@@ -88,6 +88,26 @@
     @apply mx-auto;
     max-width: 1440px;
   }
+
+  .gallery-showcase > div:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .gallery-showcase > div:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .gallery-showcase > div:nth-child(3) {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  .gallery-showcase > div:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
 }
 
 /* 3️⃣ Dark mode override using system preference */

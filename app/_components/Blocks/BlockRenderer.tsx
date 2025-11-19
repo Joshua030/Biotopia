@@ -1,6 +1,8 @@
 import {
   BlockContact,
+  BlockExtendedContact,
   BlockFeatures,
+  BlockGalleryShowcase,
   BlockHero,
   BlockHeroStory,
   BlockMainBanner,
@@ -13,6 +15,8 @@ import { StepCards } from "./ui/StepCards/StepCards";
 import { ContactBanner } from "./ui/ContactBanner";
 import { MainBanner } from "./ui/MainBanner";
 import HeroStory from "./ui/HeroStory";
+import { GalleryShowcase } from "./ui/GalleryShowcase";
+import { ContactBannerExtended } from "./ui/ContactBannerExtended";
 
 interface BlockRenderedProps {
   blocks: PageBlocks[];
@@ -62,6 +66,18 @@ export const BlockRenderer = ({ blocks }: BlockRenderedProps) => {
         if (!block.item) return null;
         const item = block.item as BlockHeroStory;
         return <HeroStory key={block.id} blockItem={item} />;
+      }
+
+      case "block_gallery_showcase": {
+        if (!block.item) return null;
+        const item = block.item as BlockGalleryShowcase;
+        return <GalleryShowcase key={block.id} blockItem={item} />;
+      }
+
+      case "block_extended_contact": {
+        if (!block.item) return null;
+        const item = block.item as BlockExtendedContact;
+        return <ContactBannerExtended key={block.id} blockItem={item} />;
       }
 
       default:

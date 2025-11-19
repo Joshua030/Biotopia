@@ -14,13 +14,20 @@ export default async function DefaultPage({ params }: HomePageProps) {
       filter: {
         _or: [
           { permalink: { _eq: `/${slug}` } },
-          { permalink_en: { _eq: `/${slug}` } },
+          // { permalink_en: { _eq: `/${slug}` } },
+          {
+            translations: {
+              permalink: { _eq: `/${slug}` },
+            },
+          },
         ],
       },
       fields: [
         "*",
         "blocks.*",
         "blocks.item.*",
+        "blocks.item.images.*",
+        "blocks.item.images.translations.*",
         "blocks.item.translations.*",
       ] as QueryFields<CustomDirectusTypes, Pages> | undefined,
     }),

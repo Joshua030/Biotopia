@@ -36,6 +36,74 @@ export type BlockMainBanner = {
   translations: BlockMainBannerTranslations[];
 };
 
+export type BlockGalleryShowcase = {
+  "header-8mre2l": string;
+  id: string;
+  images: GalleryImageItem[];
+  pretitle?: string | null;
+  sort?: number | null;
+  title_line_one?: string | null;
+  title_line_two?: string | null;
+  translations: BlockGalleryShowcaseTranslations[];
+};
+
+export type GalleryImageItem = {
+  alt_text?: string | null;
+  id: string;
+  image_file?: string | DirectusFiles | null;
+  image_id?: string | BlockGalleryShowcase | null;
+  sort?: number | null;
+  translations: GalleryImageItemTranslations[];
+};
+
+export type BlockExtendedContact = {
+  background_image?: string | DirectusFiles | null;
+  background_image_alt?: string | null;
+  "header-kkhx7y": string;
+  headline_highlight_word?: string | null;
+  headline_highlight_word_2?: string | null;
+  headline_line_1?: string | null;
+  headline_line_2?: string | null;
+  id: string;
+  main_button: BlockExtendedContactMainButton[];
+  sort?: number | null;
+  translations: BlockExtendedContactTranslations[];
+};
+
+export type BlockExtendedContactMainButton = {
+  block_extended_contact_id?: string | BlockExtendedContact | null;
+  collection?: string | null;
+  id: number;
+  item?: string | null;
+};
+
+export type BlockExtendedContactTranslations = {
+  background_image_alt?: string | null;
+  block_extended_contact_id?: string | BlockExtendedContact | null;
+  headline_highlight_word?: string | null;
+  headline_highlight_word_2?: string | null;
+  headline_line_1?: string | null;
+  headline_line_2?: string | null;
+  id: number;
+  languages_code?: string | Languages | null;
+};
+
+export type GalleryImageItemTranslations = {
+  alt_text?: string | null;
+  gallery_image_item_id?: string | GalleryImageItem | null;
+  id: number;
+  languages_code?: string | Languages | null;
+};
+
+export type BlockGalleryShowcaseTranslations = {
+  block_gallery_showcase_id?: string | BlockGalleryShowcase | null;
+  id: number;
+  languages_code?: string | Languages | null;
+  pretitle?: string | null;
+  title_line_one?: string | null;
+  title_line_two?: string | null;
+};
+
 export type BlockMainBannerTranslations = {
   block_main_banner_id?: string | BlockMainBanner | null;
   id: number;
@@ -835,6 +903,7 @@ export type PagesTranslations = {
   id: number;
   languages_code?: string | Languages | null;
   pages_id?: string | Pages | null;
+  permalink?: string | null;
 };
 
 export type PageBlocks = {
@@ -851,7 +920,9 @@ export type PageBlocks = {
     | BlockSteps
     | BlockContact
     | BlockMainBanner
-    | BlockHeroStory;
+    | BlockHeroStory
+    | BlockGalleryShowcase
+    | BlockExtendedContact;
   page?: string | Pages | null;
   sort?: number | null;
   user_created?: string | DirectusUsers | null;
@@ -869,7 +940,6 @@ export type Pages = {
   meta_seo: string;
   meta_tabs: string;
   permalink?: string | null;
-  permalink_en?: string | null;
   published_at?: string | null;
   seo?: unknown | null;
   sort?: number | null;
@@ -985,4 +1055,11 @@ export type CustomDirectusTypes = {
   block_main_banner_translations: BlockMainBannerTranslations[];
   block_hero_story: BlockHeroStory[];
   block_hero_story_translations: BlockHeroStoryTranslations[];
+  gallery_image_item: GalleryImageItem[];
+  gallery_image_item_translations: GalleryImageItemTranslations[];
+  block_gallery_showcase: BlockGalleryShowcase[];
+  block_gallery_showcase_translations: BlockGalleryShowcaseTranslations[];
+  block_extended_contact: BlockExtendedContact[];
+  block_extended_contact_main_button: BlockExtendedContactMainButton[];
+  block_extended_contact_translations: BlockExtendedContactTranslations[];
 };
