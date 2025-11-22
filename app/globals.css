@@ -77,6 +77,10 @@
     font-size: var(--text-lead);
     line-height: 1.6;
   }
+
+  main > :first-child {
+    @apply -mt-30;
+  }
 }
 
 @layer utilities {

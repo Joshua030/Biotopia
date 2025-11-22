@@ -16,7 +16,7 @@ import { ContactBanner } from "./ui/ContactBanner";
 import { MainBanner } from "./ui/MainBanner";
 import HeroStory from "./ui/HeroStory";
 import { GalleryShowcase } from "./ui/GalleryShowcase";
-import { ContactBannerExtended } from "./ui/ContactBannerExtended";
+import { ContactBannerExtended } from "./ui/contactBannerExtended/ContactBannerExtended";
 
 interface BlockRenderedProps {
   blocks: PageBlocks[];

@@ -6,9 +6,12 @@ import { SoftButton } from "./ui/SoftButton";
 export const ButtonRenderer = async ({ buttonId }: { buttonId: string }) => {
   const button = (await client.request(
     readItem("block_button", buttonId, {
-      fields: ["*", "translations.*"] as
-        | QueryFields<CustomDirectusTypes, BlockButton>
-        | undefined,
+      fields: [
+        "*",
+        "page.permalink",
+        "translations.*",
+        "page.translations.*",
+      ] as QueryFields<CustomDirectusTypes, BlockButton> | undefined,
     }),
   )) as BlockButton;
   switch (button?.variant) {

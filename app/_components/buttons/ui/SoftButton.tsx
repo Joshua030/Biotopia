@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const SoftButton = async (button: BlockButton) => {
   const { lang } = await getLocaleFromCookies();
-  const { href, target, rel, isExternal } = resolveButtonUrl(button);
+  const { href, target, rel, isExternal } = resolveButtonUrl(button, lang);
   const translationsByLang = button.translations.find(
     (translation) => translation.languages_code === lang,
   );

@@ -1,19 +1,34 @@
-import { BlockButton } from "@/app/_types/directusTypes";
+import {
+  BlockButton,
+  NavigationItems,
+  Pages,
+  Posts,
+} from "@/app/_types/directusTypes";
 
 /**
  * Resolves the URL and attributes for a button block.
  */
-export function resolveButtonUrl(button: BlockButton) {
+
+export function resolveButtonUrl(
+  button: BlockButton | NavigationItems,
+  lang: string,
+) {
   let href = "#";
   let target: "_blank" | "_self" = "_self";
   let rel: string | undefined;
   let isExternal = false;
 
   // Handle internal types
-  if (button.type === "page" && button.page?.permalink) {
-    href = button.page.permalink;
-  } else if (button.type === "post" && button.post?.id) {
-    href = `/posts/${button.post.id}`;
+  if (button.type === "page" && (button.page as Pages)?.permalink) {
+    const translationsByLang = (button.page as Pages)?.translations.find(
+      (translation) => translation.languages_code === lang,
+    );
+
+    const formattedPermalink =
+      translationsByLang?.permalink || (button.page as Pages)?.permalink;
+    href = formattedPermalink || "#";
+  } else if (button.type === "post" && (button.post as Posts)?.id) {
+    href = `/posts/${(button.post as Posts).id}`;
   } else if (button.url) {
     href = button.url;
   }

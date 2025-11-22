@@ -20,9 +20,5 @@ export default async function HomePage({ params }: HomePageProps) {
     }),
   );
 
-  return (
-    <div>
-      <BlockRenderer blocks={homepageData[0].blocks} />
-    </div>
-  );
+  return <BlockRenderer blocks={homepageData[0].blocks} />;
 }

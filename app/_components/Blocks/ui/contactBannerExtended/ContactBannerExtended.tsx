@@ -1,7 +1,14 @@
 import { DIRECTUS_URL } from "@/app/_lib/config/constants";
+import client from "@/app/_lib/directus";
 import { getLocaleFromCookies } from "@/app/_lib/utils/getLocaleFromCookies";
-import { BlockExtendedContact } from "@/app/_types/directusTypes";
+import type {
+  BlockButton,
+  BlockExtendedContact,
+  CustomDirectusTypes,
+} from "@/app/_types/directusTypes";
+import { QueryFields, readItem } from "@directus/sdk";
 import Image from "next/image";
+import ContactLink from "./ContactLink";
 
 interface ContactBannerExtendedProps {
   blockItem: BlockExtendedContact;
@@ -19,8 +26,19 @@ export const ContactBannerExtended = async ({
     headline_highlight_word_2,
     headline_line_1,
     headline_line_2,
+    main_link,
   } = blockItem;
-  console.log(blockItem, "blockItem");
+
+  //* Request to get data for link_button
+
+  const button = (await client.request(
+    readItem("block_button", (main_link as string) ?? "", {
+      fields: ["*", "page.permalink", "page.translations", "translations.*"] as
+        | QueryFields<CustomDirectusTypes, BlockButton>
+        | undefined,
+    }),
+  )) as BlockButton;
+
   const translationsByLang = translations.find(
     (translation) => translation.languages_code === lang,
   );
@@ -31,7 +49,8 @@ export const ContactBannerExtended = async ({
   return (
     <section className="main-container bg-mineral-900 mt-100 aspect-6/2">
       <div className="inner-container">
-        <div className="relative flex aspect-15/9 w-full -translate-y-50 transform items-end p-16">
+        <div className="relative mx-auto flex aspect-15/9 w-full max-w-7xl -translate-y-50 transform items-end p-16">
+          <ContactLink button={button} lang={lang} />
           <Image
             src={`${DIRECTUS_URL.ASSETS}/${background_image}`}
             fill

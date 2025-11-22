@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { SUPPORTED } from "../_constants/constants";
 import { Supported } from "../_types/generalTypes";
 import { VisualEditorProvider } from "../_provideres/VisualEditorProvider";
+import NavBar from "../_components/general/NavBar/NavBar";
 
 export default async function LocaleLayout({
   children,
@@ -15,8 +16,11 @@ export default async function LocaleLayout({
     notFound();
   }
   return (
-    <div>
-      <VisualEditorProvider>{children}</VisualEditorProvider>
-    </div>
+    <>
+      <NavBar />
+      <main id="main-content">
+        <VisualEditorProvider>{children}</VisualEditorProvider>
+      </main>
+    </>
   );
 }

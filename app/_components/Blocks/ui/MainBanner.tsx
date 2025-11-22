@@ -10,7 +10,6 @@ export const MainBanner = async ({
   image_alt,
 }: BlockMainBanner) => {
   const { lang } = await getLocaleFromCookies();
-  console.log(background_image, "bg");
 
   const translationsByLang = translations.find(
     (translation) => translation.languages_code === lang,

@@ -65,16 +65,9 @@ export type BlockExtendedContact = {
   headline_line_1?: string | null;
   headline_line_2?: string | null;
   id: string;
-  main_button: BlockExtendedContactMainButton[];
+  main_link?: string | BlockButton | null;
   sort?: number | null;
   translations: BlockExtendedContactTranslations[];
-};
-
-export type BlockExtendedContactMainButton = {
-  block_extended_contact_id?: string | BlockExtendedContact | null;
-  collection?: string | null;
-  id: number;
-  item?: string | null;
 };
 
 export type BlockExtendedContactTranslations = {
@@ -855,6 +848,7 @@ export type Globals = {
   description?: string | null;
   directus_url?: string | null;
   favicon?: string | DirectusFiles | null;
+  available_languages?: string[] | null;
   id: string;
   logo?: string | DirectusFiles | null;
   logo_dark_mode?: string | DirectusFiles | null;
@@ -896,7 +890,14 @@ export type NavigationItems = {
   url?: string | null;
   user_created?: string | DirectusUsers | null;
   user_updated?: string | DirectusUsers | null;
-  translations: PagesTranslations[];
+  translations: NavigationItemsTranslations[];
+};
+
+export type NavigationItemsTranslations = {
+  id: number;
+  languages_code?: string | Languages | null;
+  navigation_items_id?: string | NavigationItems | null;
+  title?: string | null;
 };
 
 export type PagesTranslations = {
@@ -1060,6 +1061,6 @@ export type CustomDirectusTypes = {
   block_gallery_showcase: BlockGalleryShowcase[];
   block_gallery_showcase_translations: BlockGalleryShowcaseTranslations[];
   block_extended_contact: BlockExtendedContact[];
-  block_extended_contact_main_button: BlockExtendedContactMainButton[];
   block_extended_contact_translations: BlockExtendedContactTranslations[];
+  navigation_items_translations: NavigationItemsTranslations[];
 };
