@@ -10,6 +10,7 @@ import { NavigationItem } from "./NavigationItem";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import { DIRECTUS_URL } from "@/app/_lib/config/constants";
+import LanguageSelector from "../languageSelector/LanguageSelector";
 
 const NavBar = async () => {
   /* Get Locale from cookies */
@@ -33,8 +34,6 @@ const NavBar = async () => {
   );
 
   const logoID = globalData?.logo;
-
-  console.log(globalData, "GLOBAL DATA IN NAVBAR");
 
   const headerNavigation = headerMenu[0];
 
@@ -72,6 +71,9 @@ const NavBar = async () => {
               {headerNavigation.items.map((item) => (
                 <NavigationItem key={item.id} item={item} />
               ))}
+              <LanguageSelector
+                allowedLanguages={globalData?.available_languages || undefined}
+              />
             </nav>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { Supported } from "./generalTypes";
+
 export type AiPrompts = {
   date_created?: string | null;
   date_updated?: string | null;
@@ -848,7 +850,7 @@ export type Globals = {
   description?: string | null;
   directus_url?: string | null;
   favicon?: string | DirectusFiles | null;
-  available_languages?: string[] | null;
+  available_languages?: Supported[] | null;
   id: string;
   logo?: string | DirectusFiles | null;
   logo_dark_mode?: string | DirectusFiles | null;

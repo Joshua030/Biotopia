@@ -26,7 +26,7 @@ export const FeaturedCard = async ({ id }: { id: string }) => {
   const formattedText = translationsByLang?.main_text || main_text || "";
   return (
     <div className="flex flex-col items-start gap-8">
-      <div className="bg-soft-green p-4 group-[.dark-section]:bg-amber-50">
+      <div className="bg-soft-green rounded-full p-4 group-[.dark-section]:bg-amber-50">
         <InlineSvgTrusted
           src={src}
           width={45}
