@@ -11,7 +11,7 @@
   --bg-soft-green: rgba(52, 80, 26, 0.11);
 
   /*********************Padding ***********************/
-  --app-padding-inline: 3rem;
+  --app-padding-inline: 2rem;
 
   /*****************Html tags *************************/
   --text-h1: clamp(2.5rem, 6vw, 4rem);
@@ -112,6 +112,12 @@
     grid-column: 2;
     grid-row: 2;
   }
+
+  .button-shadow {
+    box-shadow:
+      rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+      rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  }
 }
 
 /* 3️⃣ Dark mode override using system preference */
@@ -123,5 +129,12 @@
     --mineral-300: oklch(0.6 0.05 145);
     --mineral-200: oklch(0.75 0.04 20);
     --mineral-100: oklch(0.7 0.05 75);
+  }
+}
+
+@media (width >= 40rem) {
+  :root {
+    /*********************Padding ***********************/
+    --app-padding-inline: 3rem;
   }
 }

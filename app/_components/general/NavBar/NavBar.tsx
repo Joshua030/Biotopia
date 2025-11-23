@@ -45,7 +45,7 @@ const NavBar = async () => {
   //TODO: Fix submenu navigation
 
   return (
-    <header className="main-container relative z-50 bg-transparent shadow">
+    <header className="main-padding relative z-50 bg-transparent shadow">
       <div className="inner-container mx-auto">
         <div className="flex h-30">
           <div className="flex w-full items-center justify-between">
@@ -66,7 +66,7 @@ const NavBar = async () => {
 
             <nav
               aria-label="Main navigation"
-              className="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-4"
+              className="hidden xl:ml-6 xl:flex xl:items-center xl:space-x-4"
             >
               {headerNavigation.items.map((item) => (
                 <NavigationItem key={item.id} item={item} />

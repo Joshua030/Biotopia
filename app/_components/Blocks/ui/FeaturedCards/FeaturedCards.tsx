@@ -33,8 +33,8 @@ export const FeaturedCards = async ({
           : "text-mineral-900 bg-amber-50",
       )}
     >
-      <div className="inner-container flex items-end py-50">
-        <div className="relative aspect-2/3 w-1/3">
+      <div className="inner-container flex flex-col items-end py-25 sm:flex-row lg:py-50">
+        <div className="relative hidden aspect-2/3 w-1/3 xl:block">
           <Image
             src={`${DIRECTUS_URL.ASSETS}/${feature_image}`}
             fill
@@ -42,7 +42,7 @@ export const FeaturedCards = async ({
             alt={formattedSrc || "Imagen detallata de un paisaje"}
           />
         </div>
-        <div className="grid w-2/3 grid-cols-2 gap-x-15 gap-y-20 pl-15">
+        <div className="grid w-full grid-cols-1 gap-x-15 gap-y-20 sm:grid-cols-2 xl:w-2/3 xl:pl-15">
           {(featured_card_id as string[])?.map((featuredCard) => (
             <FeaturedCard id={featuredCard} key={featuredCard} />
           ))}

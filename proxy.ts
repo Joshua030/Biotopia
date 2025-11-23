@@ -19,7 +19,7 @@ function pickSupportedLocaleFromHeader(header: string | null): string {
   return DEFAULT_LANGUAGE;
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   if (

@@ -258,6 +258,7 @@ export type BlockSteps = {
 
 export type BlockContact = {
   background_image?: string | DirectusFiles | null;
+  background_image_mobile?: string | DirectusFiles | null;
   button_group: string;
   description?: string | null;
   "header-vhcm3p": string;

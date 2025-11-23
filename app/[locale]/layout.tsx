@@ -3,6 +3,7 @@ import { SUPPORTED } from "../_constants/constants";
 import { Supported } from "../_types/generalTypes";
 import { VisualEditorProvider } from "../_provideres/VisualEditorProvider";
 import NavBar from "../_components/general/NavBar/NavBar";
+import { Footer } from "../_components";
 
 export default async function LocaleLayout({
   children,
@@ -21,6 +22,7 @@ export default async function LocaleLayout({
       <main id="main-content">
         <VisualEditorProvider>{children}</VisualEditorProvider>
       </main>
+      <Footer />
     </>
   );
 }

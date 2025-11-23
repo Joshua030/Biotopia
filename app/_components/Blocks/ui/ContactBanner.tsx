@@ -15,6 +15,7 @@ export const ContactBanner = async ({
   button_group,
   translations,
   background_image,
+  background_image_mobile,
   image_src,
 }: BlockContact) => {
   const { lang } = await getLocaleFromCookies();
@@ -37,15 +38,26 @@ export const ContactBanner = async ({
     "Imagen de banner de contacto";
   return (
     <div className="main-padding relative">
+      {/* Desktop Image */}
       <Image
         src={`${DIRECTUS_URL.ASSETS}/${background_image}`}
         fill
-        className="object-cover"
+        className="hidden object-cover sm:block"
         alt={formattedSrc}
       />
+
+      {/* Mobile Image */}
+      {background_image_mobile && (
+        <Image
+          src={`${DIRECTUS_URL.ASSETS}/${background_image_mobile}`}
+          fill
+          className="block object-cover sm:hidden"
+          alt={formattedSrc}
+        />
+      )}
       <div className="absolute inset-0 bg-linear-to-t from-[rgba(0,0,0,0.23)] to-[rgba(0,0,0,0.23)]"></div>
-      <div className="inner-container relative z-2 flex min-h-[522px] flex-col gap-8 py-25">
-        <h2 className="max-w-[900px] text-6xl leading-[1.2] font-semibold text-amber-50 uppercase">
+      <div className="inner-container relative z-2 flex aspect-square min-h-auto flex-col gap-8 py-25 sm:aspect-auto sm:min-h-[522px]">
+        <h2 className="max-w-[900px] text-4xl leading-[1.2] font-semibold text-amber-50 uppercase sm:text-6xl">
           {formattedTitle}
         </h2>
         <div className="flex gap-4">

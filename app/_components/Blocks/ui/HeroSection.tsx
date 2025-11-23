@@ -57,9 +57,9 @@ export const HeroSection = async ({
       </video>
       <div className="bg-mineral-900/60 absolute inset-0 z-1"></div>
       <div className="main-padding">
-        <div className="inner-container relative z-2 mb-[20vh] flex flex-col gap-16">
-          <div className="flex flex-col gap-8">
-            <h1 className="text-8xl leading-none font-normal text-amber-50 uppercase">
+        <div className="inner-container relative z-2 mb-20 flex flex-col gap-10 sm:mb-[20vh] sm:gap-16">
+          <div className="flex flex-col gap-2 sm:gap-8">
+            <h1 className="text-6xl font-normal text-amber-50 uppercase sm:text-8xl sm:leading-none xl:text-7xl 2xl:text-8xl">
               {formattedHeadline}
               {tagline && (
                 <span className="block font-semibold">{formattedTagline}</span>
