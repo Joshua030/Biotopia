@@ -15,7 +15,7 @@ const ContactLink = ({ button, lang }: ContactLinkProps) => {
     lang || "es",
   );
 
-  const buttonClassNames = "z-10 absolute top-8 right-8";
+  const buttonClassNames = "z-10 absolute bottom-8 lg:top-8 right-8";
 
   return (
     <>

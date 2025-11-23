@@ -1,8 +1,9 @@
 export const ArrowButton = () => {
   return (
     <svg
-      width="81"
-      height="83"
+      // width="81"
+      // height="83"
+      className="h-14 w-14 lg:h-20 lg:w-20"
       viewBox="0 0 81 83"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

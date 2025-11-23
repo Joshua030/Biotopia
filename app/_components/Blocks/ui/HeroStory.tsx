@@ -36,8 +36,8 @@ const HeroStory = async ({ blockItem }: HeroStoryProps) => {
 
   return (
     <section className="main-padding bg-amber-50">
-      <div className="inner-container grid grid-cols-[1fr_2fr] gap-x-5 gap-y-20 py-20">
-        <h2 className="font-serif text-5xl leading-tight font-bold">
+      <div className="inner-container grid grid-cols-[1fr_2fr] gap-x-5 gap-y-10 py-20 lg:gap-y-20">
+        <h2 className="col-span-2 font-serif text-5xl leading-tight font-bold lg:col-auto">
           <span className="text-mineral-900 block">
             {formattedTitleLineOne}
           </span>
@@ -46,7 +46,7 @@ const HeroStory = async ({ blockItem }: HeroStoryProps) => {
             {formattedTitleLineThree}
           </span>
         </h2>
-        <div className="flex items-center">
+        <div className="col-span-2 flex items-center lg:col-auto">
           {formattedDescription && (
             <div dangerouslySetInnerHTML={{ __html: formattedDescription }} />
           )}

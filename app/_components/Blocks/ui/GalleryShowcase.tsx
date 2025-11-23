@@ -24,8 +24,8 @@ export const GalleryShowcase = async ({ blockItem }: GallleryShowcaseProps) => {
 
   return (
     <div className="main-padding bg-amber-50">
-      <div className="inner-container flex items-end py-28">
-        <div className="w-1/3 pr-10">
+      <div className="inner-container flex flex-wrap items-end gap-10 py-28 lg:flex-nowrap lg:gap-0">
+        <div className="w-full pr-10 lg:w-1/3">
           <p>{`[ ${pretitle} ]`}</p>
           <h2 className="font-serif text-5xl leading-tight font-bold">
             <span className="text-mineral-900 block">

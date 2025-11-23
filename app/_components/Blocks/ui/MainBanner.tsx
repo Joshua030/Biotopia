@@ -19,7 +19,7 @@ export const MainBanner = async ({
   const formattedAlt = translationsByLang?.image_src || image_alt;
 
   return (
-    <header className="relative flex aspect-3/1 w-full flex-col justify-end">
+    <header className="relative flex aspect-square w-full flex-col justify-end sm:aspect-3/1">
       <Image
         src={`${DIRECTUS_URL.ASSETS}/${background_image}`}
         fill
@@ -27,9 +27,9 @@ export const MainBanner = async ({
         alt={formattedAlt || "banner seccion acerca de nosotros"}
       />
       <div className="main-padding">
-        <div className="inner-container relative z-2 mb-[20vh] flex flex-col gap-16">
+        <div className="inner-container relative z-2 mb-20 flex flex-col gap-16 lg:mb-[20vh]">
           <div className="flex flex-col gap-8">
-            <h1 className="text-8xl leading-none font-normal text-amber-50 uppercase">
+            <h1 className="text-6xl font-normal text-amber-50 uppercase sm:leading-none 2xl:text-8xl">
               {formattedTitle}
             </h1>
           </div>

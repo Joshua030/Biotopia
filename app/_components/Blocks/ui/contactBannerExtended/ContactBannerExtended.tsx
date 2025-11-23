@@ -47,9 +47,9 @@ export const ContactBannerExtended = async ({
     translationsByLang?.background_image_alt || background_image_alt;
 
   return (
-    <section className="main-container bg-mineral-900 mt-100 aspect-6/2">
+    <section className="main-container bg-mineral-900 mt-30 aspect-6/2 lg:mt-80">
       <div className="inner-container">
-        <div className="relative mx-auto flex aspect-15/9 w-full max-w-7xl -translate-y-50 transform items-end p-16">
+        <div className="relative mx-auto flex aspect-15/9 w-full max-w-7xl -translate-y-30 transform items-end px-8 py-16 lg:-translate-y-50 lg:px-16">
           <ContactLink button={button} lang={lang} />
           <Image
             src={`${DIRECTUS_URL.ASSETS}/${background_image}`}
@@ -58,8 +58,8 @@ export const ContactBannerExtended = async ({
             alt={formattedAlt || "Imagen detallata de vegetación"}
           />
           <div className="bg-mineral-900/40 absolute inset-0 z-1"></div>
-          <div className="relative z-2 w-9/12">
-            <h2 className="font-serif text-7xl leading-tight font-bold">
+          <div className="relative z-2 w-full lg:w-9/12">
+            <h2 className="font-serif leading-tight font-bold sm:text-4xl lg:text-7xl">
               <span className="block">
                 <span className="text-amber-50">{headline_line_1} </span>
                 <span className="text-gray-300">{headline_highlight_word}</span>
