@@ -6,5 +6,7 @@ export { StepCards } from "./Blocks/ui/StepCards/StepCards";
 export { ButtonRenderer } from "./buttons/ButtonRenderer";
 export { SoftButton } from "./buttons/ui/SoftButton";
 export { ArrowButton } from "./icons/ArrowButton";
+export { SideBar } from "./general/NavBar/SideBar";
+export * from "./icons/InlineSvgTrusted";
 export { Footer } from "./general/Footer/Footer";
 export * from "./general/NavBar/NavBar";

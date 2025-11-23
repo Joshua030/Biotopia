@@ -11,6 +11,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import { DIRECTUS_URL } from "@/app/_lib/config/constants";
 import LanguageSelector from "../languageSelector/LanguageSelector";
+import { NavMobileButton } from "./NavMobileButton";
 
 const NavBar = async () => {
   /* Get Locale from cookies */
@@ -53,7 +54,7 @@ const NavBar = async () => {
               <Link
                 href={`/${locale}`}
                 aria-label="Your Site - Home"
-                className="relative aspect-5/2 w-50"
+                className="relative aspect-5/2 w-35 lg:w-50"
               >
                 <Image
                   src={`${DIRECTUS_URL.ASSETS}/${logoID}`}
@@ -75,6 +76,7 @@ const NavBar = async () => {
                 allowedLanguages={globalData?.available_languages || undefined}
               />
             </nav>
+            <NavMobileButton />
           </div>
         </div>
       </div>

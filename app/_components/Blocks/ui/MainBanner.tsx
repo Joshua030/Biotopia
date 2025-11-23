@@ -7,6 +7,7 @@ export const MainBanner = async ({
   main_title,
   translations,
   background_image,
+  background_image_mobile,
   image_alt,
 }: BlockMainBanner) => {
   const { lang } = await getLocaleFromCookies();
@@ -20,12 +21,23 @@ export const MainBanner = async ({
 
   return (
     <header className="relative flex aspect-square w-full flex-col justify-end sm:aspect-3/1">
+      {/* Desktop Image */}
       <Image
         src={`${DIRECTUS_URL.ASSETS}/${background_image}`}
         fill
-        className="object-cover"
+        className="hidden object-cover sm:block"
         alt={formattedAlt || "banner seccion acerca de nosotros"}
       />
+
+      {/* Mobile Image */}
+      {background_image_mobile && (
+        <Image
+          src={`${DIRECTUS_URL.ASSETS}/${background_image_mobile}`}
+          fill
+          className="block object-cover sm:hidden"
+          alt={formattedAlt || "banner seccion acerca de nosotros"}
+        />
+      )}
       <div className="main-padding">
         <div className="inner-container relative z-2 mb-20 flex flex-col gap-16 lg:mb-[20vh]">
           <div className="flex flex-col gap-8">

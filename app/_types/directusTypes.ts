@@ -30,6 +30,7 @@ export type BlockButtonTranslations = {
 
 export type BlockMainBanner = {
   background_image?: string | DirectusFiles | null;
+  background_image_mobile?: string | DirectusFiles | null;
   "header-qnr8cf": string;
   id: string;
   image_alt?: string | null;

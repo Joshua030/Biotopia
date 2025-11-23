@@ -1,4 +1,4 @@
-import InlineSvgTrusted from "@/app/_components/general/InlineSvgTrusted";
+import InlineSvgTrusted from "@/app/_components/icons/InlineSvgTrusted";
 import { DIRECTUS_URL } from "@/app/_lib/config/constants";
 import client from "@/app/_lib/directus";
 import { getLocaleFromCookies } from "@/app/_lib/utils/getLocaleFromCookies";

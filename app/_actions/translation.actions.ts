@@ -1,3 +1,4 @@
+"use server";
 import { QueryFields, readItems } from "@directus/sdk";
 import client from "../_lib/directus";
 import { CustomDirectusTypes, Pages } from "../_types/directusTypes";
@@ -12,10 +13,7 @@ export const validateUrlPPath = async ({
   currentPath,
   locale,
 }: ValidateUrlPathProps) => {
-  console.log(locale, "LOCALE IN VALIDATE URL PATH");
   const lang = getDirectusLang(locale as string);
-
-  console.log(lang, "LANG IN VALIDATE URL PATH");
   try {
     const pageData = (await client.request(
       readItems("pages", {

@@ -17,7 +17,7 @@ export function resolveButtonUrl(
   let target: "_blank" | "_self" = "_self";
   let rel: string | undefined;
   let isExternal = false;
-
+  //TODO: Extend functionality  to handle other type  of posts
   // Handle internal types
   if (button.type === "page" && (button.page as Pages)?.permalink) {
     const translationsByLang = (button.page as Pages)?.translations.find(
