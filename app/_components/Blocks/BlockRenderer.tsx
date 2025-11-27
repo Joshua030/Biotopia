@@ -2,6 +2,7 @@ import {
   BlockContact,
   BlockExtendedContact,
   BlockFeatures,
+  BlockForm,
   BlockGalleryShowcase,
   BlockHero,
   BlockHeroStory,
@@ -17,6 +18,7 @@ import { MainBanner } from "./ui/MainBanner";
 import HeroStory from "./ui/HeroStory";
 import { GalleryShowcase } from "./ui/GalleryShowcase";
 import { ContactBannerExtended } from "./ui/contactBannerExtended/ContactBannerExtended";
+import { FormSection } from "./ui/formSection/FormSection";
 
 interface BlockRenderedProps {
   blocks: PageBlocks[];
@@ -78,6 +80,11 @@ export const BlockRenderer = ({ blocks }: BlockRenderedProps) => {
         if (!block.item) return null;
         const item = block.item as BlockExtendedContact;
         return <ContactBannerExtended key={block.id} blockItem={item} />;
+      }
+      case "block_form": {
+        if (!block.item) return null;
+        const item = block.item as BlockForm;
+        return <FormSection key={block.id} blockItem={item} />;
       }
 
       default:

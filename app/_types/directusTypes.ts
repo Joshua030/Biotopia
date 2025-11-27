@@ -802,6 +802,15 @@ export type FormFields = {
   user_updated?: string | DirectusUsers | null;
   validation?: string | null;
   width?: string | null;
+  translations: FormFieldsTranslations[];
+};
+
+export type FormFieldsTranslations = {
+  form_fields_id?: string | FormFields | null;
+  id: number;
+  label?: string | null;
+  languages_code?: string | Languages | null;
+  placeholder?: string | null;
 };
 
 export type FormSubmissionValues = {
@@ -841,8 +850,17 @@ export type Forms = {
   success_message?: string | null;
   success_redirect_url?: string | null;
   title?: string | null;
+  translations: FormsTranslations[];
   user_created?: string | DirectusUsers | null;
   user_updated?: string | DirectusUsers | null;
+};
+
+export type FormsTranslations = {
+  forms_id?: string | Forms | null;
+  id: number;
+  languages_code?: string | Languages | null;
+  submit_label?: string | null;
+  success_message?: string | null;
 };
 
 export type Globals = {
@@ -859,12 +877,29 @@ export type Globals = {
   meta_credentials: string;
   meta_header_globals: string;
   openai_api_key?: string | null;
+  address_group: string;
+  address_label?: string | null;
+  address_value?: string | null;
+  city?: string | null;
+  country?: string | null;
+  phone_group: string;
+  phone_label?: string | null;
+  phone_value?: string | null;
   social_links?: unknown | null;
   tagline?: string | null;
   title?: string | null;
   url?: string | null;
   user_created?: string | DirectusUsers | null;
   user_updated?: string | DirectusUsers | null;
+  translations: GlobalsTranslations[];
+};
+
+export type GlobalsTranslations = {
+  address_label?: string | null;
+  globals_id?: string | Globals | null;
+  id: number;
+  languages_code?: string | Languages | null;
+  phone_label?: string | null;
 };
 
 export type Navigation = {
@@ -927,7 +962,8 @@ export type PageBlocks = {
     | BlockMainBanner
     | BlockHeroStory
     | BlockGalleryShowcase
-    | BlockExtendedContact;
+    | BlockExtendedContact
+    | BlockForm;
   page?: string | Pages | null;
   sort?: number | null;
   user_created?: string | DirectusUsers | null;
@@ -1038,6 +1074,7 @@ export type CustomDirectusTypes = {
   form_submission_values: FormSubmissionValues[];
   form_submissions: FormSubmissions[];
   forms: Forms[];
+  forms_translations: FormsTranslations[];
   globals: Globals;
   navigation: Navigation[];
   navigation_items: NavigationItems[];
